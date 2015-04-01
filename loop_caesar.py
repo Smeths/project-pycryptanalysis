@@ -2,7 +2,7 @@ from pycryptanalysis import chi_squared
 from pycipher import Caesar
 
 chi = chi_squared()
-chi_old = 2000
+chi_old = 20000000000
 cipher = 'EFGFOEUIFFBTUXBMMPGUIFDBTUMF'
 
 for i in range(1,27):

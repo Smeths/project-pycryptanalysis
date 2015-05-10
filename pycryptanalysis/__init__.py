@@ -1,4 +1,5 @@
-from chi_squared import chi_squared
-from ngram_score import ngram_score
-from cipher import cipher
+from tests import chi_squared
+from tests import inc_of_coin
+from tests import clean_cipher
+from ngram import ngram
 

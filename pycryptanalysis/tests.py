@@ -10,22 +10,42 @@ class crypt_consts:
                               0.06327,0.09056,0.02758,0.00978,0.02360,0.00150, \
                               0.01974,0.00074]
 
+       self.sum_prob_squared = 0.0654966995
+
 class chi_squared(crypt_consts):
+
+    def __init__(self,ordered_test):
+
+       crypt_consts.__init__(self)
+
+       if ordered_test == 0:
+           self.ordered = 0
+       else:
+           self.ordered = 1
 
     def run(self,cipher):
         
-        cipher = cipher.lower()
-          
+        cipher = cipher.lower()          
         cipher_len = len(cipher)
 
         # Calculate expected quantity of each letter
 
-        exp_letter_freqs = [i * cipher_len for i in self.alphabet_probs] 
+        exp_letter_freqs = [i * cipher_len for i in self.alphabet_probs]
 
+        # Calculating actual quantity of each letter
+
+        act_letter_freqs = [cipher.count(self.alphabet[i]) for i in xrange(0,26)]
+
+        if self.ordered == 1:
+            exp_letter_freqs = sorted(exp_letter_freqs)
+            act_letter_freqs = sorted(act_letter_freqs)
+            
         chi = 0
+        sum = 0
 
-        for i in range(0,26):
-            chi = chi + ((cipher.count(self.alphabet[i]) - exp_letter_freqs[i])**2)/exp_letter_freqs[i]
+        # Ordering letter
+        for i in xrange(0,26):
+            chi = chi + ((act_letter_freqs[i] - exp_letter_freqs[i])**2)/exp_letter_freqs[i]            
 
         return chi
 

@@ -12,13 +12,13 @@ cipher_str = cipher_file.read()
 
 clean = clean_cipher()
 cipher_clean = clean.run(cipher_str)
-chi = chi_squared()
+chi = chi_squared(0)
 
 # initialising chi squared test
 
 chi_large = 5000.0
 
-for i in xrange(0,25):
+for i in xrange(0,26):
     decipher = Caesar(key=i).decipher(cipher_clean)
     chi_stat = chi.run(decipher.lower())
     if chi_stat < chi_large:
@@ -28,18 +28,6 @@ for i in xrange(0,25):
 
 print deciphered
 print key
-
-#remove this code, inserted as a quick check for the incidence of 
-#coincidence and the ngram module
-
-from pycryptanalysis import inc_of_coin
-from pycryptanalysis import ngram
-
-ioc = inc_of_coin()
-print ioc.run(cipher_clean)
-
-quadgram = ngram('quadgrams.txt')
-print quadgram.run(cipher_clean)
 
 
 

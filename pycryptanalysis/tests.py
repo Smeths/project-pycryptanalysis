@@ -1,5 +1,8 @@
 class crypt_consts:
 
+    """
+    Base class containing cryptographic constants
+    """
     def __init__(self):
 
        self.alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m', \
@@ -21,6 +24,12 @@ class crypt_consts:
 
 class chi_squared(crypt_consts):
 
+    """
+    Calculates chi squared stat for an alphabet order
+    frequency distribution (order_test=0). Or the alphabet frequency 
+    distribution sorted from lowest theoretical frequency (order_test=1)
+    """
+
     def __init__(self,ordered_test):
 
        crypt_consts.__init__(self)
@@ -31,7 +40,7 @@ class chi_squared(crypt_consts):
            self.ordered = 1
 
     def run(self,cipher):
-        
+       
         cipher = cipher.lower()          
         cipher_len = len(cipher)
 
@@ -58,6 +67,10 @@ class chi_squared(crypt_consts):
 
 class inc_of_coin(crypt_consts):
 
+    """
+    Calculates the incidence of coincidence for a given cipher
+    """
+
     def run(self,cipher):
 
         sum=0.0
@@ -73,6 +86,10 @@ class inc_of_coin(crypt_consts):
         return ioc
 
 class clean_cipher():
+
+    """
+    removes everything from cipher apart from letters and numbers
+    """
 
     def run(self,cipher):
 

@@ -19,7 +19,7 @@ incidence of coincidence
 ####clean_cipher
 removes any non alphabetic or number characters
 
-##pycipher
+##pycipher:
 
 A package for enciphering and deciphering classic ciphers. contains most of the classic
 ciphers and has been cloned from github

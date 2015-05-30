@@ -1,4 +1,4 @@
-from pycipher import ColTrans
+from pycipher import ColTrans_test
 from pycryptanalysis import ngram
 from pycryptanalysis import clean_cipher
 from itertools import permutations
@@ -8,27 +8,31 @@ from itertools import permutations
 cipher_address = 'ciphers/plaintext.txt'
 cipher_file = open(cipher_address,'r')
 cipher_str = cipher_file.read()
-cipher_str = clean_cipher().run(cipher_str)
+cipher = clean_cipher().run(cipher_str)
 
 # enciphering using columnar transposition
 
-pt_encipher = ColTrans(keyword="FRED").encipher(cipher_str)
+encipher = ColTrans_test(keyword="FRED").encipher(cipher)
 
-# Using ngram test to decipher
+# initialising col transposition
+
+col = ColTrans_test(cipher=encipher)
+
+# initialising the ngram test
 
 quadgrams = ngram("quadgrams.txt")
 bestscore = -1000000
 
 for perm in permutations(["A","B","C","D"],4):
     test_key = ''.join(list(perm))
-    pt_decipher = ColTrans(test_key).decipher(pt_encipher)
-    score = quadgrams.run(pt_decipher)
+    decipher = col.decipher(test_key)
+    score = quadgrams.run(decipher)
     if score > bestscore:
-       decipher = pt_decipher
+       deciphered = decipher
        key = test_key
        bestscore = score
 
-print decipher
+print deciphered
 print key
 
        

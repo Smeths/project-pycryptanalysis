@@ -50,8 +50,7 @@ for perm in permutations(alpha,colsize):
         ADFGVX_dict[XX] = 0
 # Perform columnar transposition part of decryption
     test_key = ''.join(list(perm))
-    col = ColTrans(test_key)
-    pt_decipher = col.decipher(pt_encipher)
+    pt_decipher = ColTrans(test_key).decipher(pt_encipher)
 # Create dictionary of ADFGVX bigrams matrix and frequencies
     for n in xrange(0,len(pt_encipher)/2):
         ADFGVX_dict[pt_decipher[2*n:2*n + 2]] = ADFGVX_dict[pt_decipher[2*n:2*n + 2]] + 1

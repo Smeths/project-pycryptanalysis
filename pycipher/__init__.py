@@ -1,6 +1,7 @@
 from adfgx import ADFGX 
 from adfgvx import ADFGVX 
 from simplesubstitution import SimpleSubstitution
+from solitaire import Solitaire
 from caesar import Caesar
 from caesar_test import Caesar_test 
 from affine import Affine
@@ -25,6 +26,6 @@ import util
 #from lorentz import Lorentz as Lorentz
 __all__=["Atbash","ADFGX","ADFGVX","SimpleSubstitution","Caesar","Affine","Enigma","Autokey","Beaufort",
          "Bifid","ColTrans","Gronsfeld","Foursquare","M209","PolybiusSquare","Playfair","Vigenere","Rot13","util",
-         "Railfence","Porta","FracMorse"]
+         "Railfence","Porta","FracMorse","Solitaire"]
 
 __version__ = "0.5.1"

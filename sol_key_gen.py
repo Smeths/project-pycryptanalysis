@@ -1,4 +1,7 @@
 from itertools import permutations
+# opening output file for keys
+
+keylist = open("sol_key.list","w")
 
 #Intialising key
 
@@ -34,6 +37,7 @@ for perm in permutations([8,12,21,26,28,48,49,50]):
     key[49] = str(perm[6])
     key[53] = str(perm[7])
     key_str = ', '.join(key)
-    print key_str
-    
+    keylist.write(key_str)
+    keylist.write("\n")
 
+keylist.close()

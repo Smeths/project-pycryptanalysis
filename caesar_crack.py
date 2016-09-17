@@ -2,7 +2,7 @@
 
 from pycryptanalysis import chi_squared
 from pycryptanalysis import clean_cipher
-from pycipher import Caesar
+from pycipher import Caesar_test
 
 # opening and cleaning a cipher
 
@@ -16,8 +16,12 @@ cipher_str = clean_cipher().run(cipher_str)
 chi = chi_squared(0)
 chi_large = 5000.0
 
+# initialising caesar cipher with cipher
+
+caesar = Caesar_test(cipher_str)
+
 for i in xrange(0,26):
-    decipher = Caesar(i).decipher(cipher_str)
+    decipher = caesar.decipher(i)
     chi_stat = chi.run(decipher.lower())
     if chi_stat < chi_large:
        deciphered = decipher
